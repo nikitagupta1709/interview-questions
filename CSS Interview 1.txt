@@ -1,0 +1,93 @@
+Q1. What is !important?
+A1. The !important rule in CSS is used to add more importance to a property/value than normal. In fact, if you use the !important rule, it will override ALL previous styling rules for that specific property on that element!
+
+Q2. What is the box model?
+A2. In CSS, the term "box model" is used when talking about design and layout.The CSS box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content. 
+	Explanation of the different parts:
+
+	i) Content - The content of the box, where text and images appear
+	ii) Padding - Clears an area around the content. The padding is transparent
+	iii) Border - A border that goes around the padding and content
+	iv) Margin - Clears an area outside the border. The margin is transparent
+	The box model allows us to add a border around elements, and to define space between elements. 
+
+	Example- Demonstration of the box model:
+	div {
+  		width: 300px;
+  		border: 15px solid green;
+  		padding: 50px;
+  		margin: 20px;
+	}
+
+Q3. What is the difference between position absolute, relative and fixed?
+A3. Relative Position: Setting the top, right, bottom, and left properties of an element with position: relative; property will cause it to adjust from its normal position. The other objects or elements will not fill the gap.
+	Syntax-  position: relative;
+
+	Absolute Position: An element with position: absolute; will cause it to adjust its position with respect to its parent. If no parent is present, then it uses the document body as parent.
+	Syntax- position: absolute;
+
+	Fixed Position:property applied to an element will cause it to always stay in the same place even if the page is scrolled. To position the element we use top, right, bottom, left properties.
+	Syntax- position: fixed;
+
+Q4. What is CSS positioning?
+A4. The position property specifies the type of positioning method used for an element (static, relative, absolute, fixed, or sticky).
+	position: static|absolute|fixed|relative|sticky|initial|inherit;
+
+Q5. The difference between display none and display hidden.
+A5. The display: none property is used to hide elements without deleting them. It does not take up any space.
+	The visibility: hidden property also hides an element, but affects the layout i.e. takes up space.
+
+Q6. Difference between flex and grid? Where to use it?
+A6. i) Flexbox offers greater control over alignment and space distribution between items. Being one-dimensional, Flexbox only deals with either columns or rows.
+	  Grid has two-dimension layout capabilities which allow flexible widths as a unit of length. This compensates for the limitations in Flex.
+	
+   ii) Flex Direction allows developers to align elements vertically or horizontally, which is used when developers create and reverse rows or columns.
+	    CSS Grid deploys fractional measure units for grid fluidity and auto-keyword functionality to automatically adjust columns or rows.
+
+  iii) Flex Container is the parent element while Flex Item represents the children. The Flex Container can ensure balanced representation by adjusting item dimensions. This allows developers to design for fluctuating screen sizes.
+		Grid supports both implicit and explicit content placement. Its inbuilt automation allows it to automatically extend line items and copy values into the new creation from the preceding item.
+
+    CSS Grids helps you create the outer layout of the webpage. You can build complex as well responsive design with this. This is why it is called ‘layout first’. While flexbox mostly helps align content & move blocks.
+    CSS grids are for 2D layouts. It works with both rows and columns.Flexbox works better in one dimension only (either rows OR columns).
+    You should consider flexbox when :          |   You should consider CSS grid when :
+                                                |
+    i) You have a small design to implement     |   You have a complex design to implement
+    ii) You need to align elements              |   You need to have a gap between block elements
+    iii) You need a content-first design        |   You need to overlap elements & need a layout-first design
+    
+Q7. What is BEM?
+A7. BEM stands for Block, Element, and Modifier. It’s a CSS naming convention for writing cleaner and more readable CSS classes.
+    BEM also aims to write independent CSS blocks in order to reuse them later in your project.
+
+    Blocks:- are independent, reusable and usually bigger components of a webpage. They can have modifiers and contain elements.
+    We can count bigger parts in a webpage like <header>, <nav>, <section>, <form>, <article>, <footer>
+    // Blocks are named as standard CSS classes
+        .block {
+        }
+
+    Elements:- are children of blocks. An element can only have 1 parent Block, and can’t be used independently outside of that block.
+    // Elements declared with 2 underscores, after block
+        .block__element {
+        }
+
+    Modifiers:- represent different states or styles of classes. They can be used both for blocks or elements.
+    // Modifiers declared with 2 dashes, after block or after element
+        .block--modifier {
+        }
+    
+    // element and modifier together
+        .block__element--modifier {
+        }
+
+Q8. What is the z-index? What is the stacking context?
+A8. The z-index property:-  in CSS controls the vertical stacking order of elements that overlap. z-index only affects elements that have a position value which is not static.
+    Without any z-index value, elements stack in the order that they appear in the DOM (the lowest one down at the same hierarchy level appears on top). 
+    Elements with non-static positioning (and their children) will always appear on top of elements with default static positioning, regardless of HTML hierarchy.
+
+    A stacking context:- is an element that contains a set of layers. Within a local stacking context, the z-index values of its children are set relative to that element rather than to the document root. 
+    Layers outside of that context — i.e. sibling elements of a local stacking context — can't sit between layers within it. 
+    If an element B sits on top of element A, a child element of element A, element C, can never be higher than element B even if element C has a higher z-index than element B.
+
+    Each stacking context is self-contained - after the element's contents are stacked, the whole element is considered in the stacking order of the parent stacking context. A handful of CSS properties trigger 
+    a new stacking context, such as opacity less than 1, filter that is not None, and transform that is not none.
+
