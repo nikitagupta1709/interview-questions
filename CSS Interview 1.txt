@@ -91,3 +91,189 @@ A8. The z-index property:-  in CSS controls the vertical stacking order of eleme
     Each stacking context is self-contained - after the element's contents are stacked, the whole element is considered in the stacking order of the parent stacking context. A handful of CSS properties trigger 
     a new stacking context, such as opacity less than 1, filter that is not None, and transform that is not none.
 
+Q9. Explain briefly what happens when you hit a url? explain DNS lookup.
+A9. Steps for what happens when we enter a URL :
+    i) Browser checks cache for DNS entry to find the corresponding IP address of website.
+    ii) If not found in cache, The requests are sent using small data packets that contain information content of request and IP address it is destined for.
+    iii) Browser initiates a TCP (Transfer Control Protocol) connection with the server using synchronize(SYN) and acknowledge(ACK) messages.
+    iv) Browser sends an HTTP request to the web server. GET or POST request.
+    v) Server on the host computer handles that request and sends back a response.
+    vi) Server sends out an HTTP response along with the status of response.
+    vii) Browser displays HTML content.
+
+    DNS-LOOKUP:
+    There are 2^32 IP Addresses (approximately 4, 294, 967, 296). With growth of internet at a rapid pace came issue of remembering websites with their IP Address.
+    This issue was resolved using DNS. Domain Name System is method of resolving human-understandable URLs into their respective IP addresses.
+    DNS Look-Up : To resolve such DNS queries, there are Domain Name Servers built across world that takes your DNS look-up request and resolve it. There are 5 types of Name Servers –
+
+    i) Caching Name Servers.
+    ii) Recursive Name Servers.
+    iii) Root Name Servers.
+    iv) Top Level Domain (TLD) Name Servers.
+    v) Authoritative Name Servers.
+
+Q10. What is a URLs full form? Explain what a url is and the four parts it consists of The protocol in use, The hostname of the server, The location of the file, and The arguments to the file.
+A10. A URL (Uniform Resource Locator) is a unique identifier used to locate a resource on the Internet. It is also referred to as a web address. URLs consist of multiple parts -- including a protocol and domain name -- 
+    that tell a web browser how and where to retrieve a resource.
+    http://www.abcd.com/~ejray/index.HTML
+    \___/ \____________/ \____/ \________/
+      |         |           |       |
+   protocol  host name    folder file name
+
+Q11. What is HTTP protocol?
+A11. HTTP stands for Hyper Text Transfer Protocol. Communication between client computers and web servers is done by sending HTTP Requests and receiving HTTP Responses.
+    i) A client (a browser) sends an HTTP request to the web
+    ii) A web server receives the request
+    iii) The server runs an application to process the request
+    iv) The server returns an HTTP response (output) to the browser
+    v) The client (the browser) receives the response
+
+Q12. What is TCP Protocol?
+A12. TCP (Transmission Control Protocol) is one of the main protocols of the Internet protocol suite. It lies between the Application and Network Layers which are used in providing reliable delivery services.
+    The TCP breaks the data into small packets and forwards it toward the Internet Protocol (IP) layer. The packets are then sent to the destination through different routes.
+    The TCP layer in the user’s system waits for the transmission to get finished and acknowledges once all packets have been received.
+
+Q13. Explain all the different HTTP methods?
+A13. The Hypertext Transfer Protocol (HTTP) is designed to enable communications between clients and servers.
+    i) GET Method: GET is used to request data from a specified resource.
+                    GET requests can be cached.
+                    GET requests remain in the browser history.
+                    GET requests can be bookmarked.
+                    GET requests have length restrictions.
+
+    ii) POST Method: POST is used to send data to a server to create/update a resource. The data sent to the server with POST is stored in the request body of the HTTP request
+                     POST requests are never cached.
+                     POST requests do not remain in the browser history.
+                     POST requests cannot be bookmarked.
+                     POST requests have no restrictions on data length.
+
+    iii) PUT Method: PUT is used to send data to a server to create/update a resource.
+
+    The difference between POST and PUT is that PUT requests is, calling the same PUT request multiple times will always produce the same result. 
+    In contrast, calling a POST request repeatedly have side effects of creating the same resource multiple times.
+
+    iv) DELETE Method: deletes the specified resource.
+
+    v) PATCH method: is used to apply partial modifications to a resource.
+
+Q14. What are HTTP headers?
+A14. The HTTP headers are used to pass additional information between the clients and the server through the request and response header.
+    There are four kinds of headers context-wise: 
+
+    i) General Header: This type of headers applied on Request and Response headers both but with out affecting the database body.
+    ii) Request Header: This type of headers contains information about the fetched request by the client.
+    iii) Response Header: This type of headers contains the location of the source that has been requested by the client.
+    iv) Entity Header: This type of headers contains the information about the body of the resources like MIME type, Content-length.
+
+Q15. What are some HTTP response codes? what does it mean? 2xx, 3xx, 4xx, 5xx
+A15. The status codes provide an easy way for clients to understand the results of their transactions. Status codes tell the client what happened. Status codes live in the start lines of responses. 
+    For example, in the line “HTTP/1.1 200 OK” the status code is 200. Status codes are returned in the start line of each response message. Both a numeric and a human readable status are returned. The numeric code makes 
+    error processing easy for programs, while the reason phrase is easily understood by humans.
+
+    2xx implies: the requests usually are successful.
+    3xx implies: either tell clients to use alternate locations for the resources they’re interested in or provide an alternate response instead of the content. is allows browsers to go to the new location transparently, without bothering their human users.
+    4xx implies: Sometimes a client sends something that a server just can’t handle, such as a badly formed request message or, most often, a request for a URL that does not exist.
+    5xx implies: Sometimes a client sends a valid request, but the server itself has an error. This could be a client running into a limitation of the server or an error in one of the server’s subcomponents, such as a gateway resource.
+
+Q16. What does cache control on http response mean?
+A16. The Cache-Control header is a general header, that specifies the caching policies of server responses as well as client requests. Basically, it gives information about the manner in which 
+    a particular resource is cached, location of the cached resource, and its maximum age attained before getting expired i.e. time to live.
+    Syntax:  
+        Cache-Control: <directive> [, <directive>]*
+
+Q17. What is polling?
+A17.
+
+Q18. What is long polling?
+A18. HTTP Long Polling is a technique used to push information to a client as soon as possible on the server. As a result, the server does not have to wait for the client to send a request. 
+    In Long Polling, the server does not close the connection once it receives a request from the client.
+
+Q19. What are web sockets?
+A19. WebSocket is bidirectional, a full-duplex protocol that is used in the same scenario of client-server communication, unlike HTTP it starts from ws:// or wss://. It is a stateful protocol, 
+    which means the connection between client and server will keep alive until it is terminated by either party (client or server). After closing the connection by either of the client and server, the connection is terminated from both ends. 
+    It can be used if we want any real-time updated or continuous streams of data that are being transmitted over the network. If we want to fetch old data, or want to get the data only once to process it with an application we should go with HTTP protocol.
+
+    WebSockets are used: 
+    i) Real-time web application
+    ii) Gaming application
+    iii) Chat application
+
+Q20. How is web sockets different from HTTP?
+A20. i) WebSocket is a protocol providing full-duplex communication channels over a single TCP connection. Where as, HTTP providing half-duplex communication.
+    ii) Information exchange mode of WebSocket is bidirectional. Means, server can push information to the client (which does not allow direct HTTP).
+    iii) The contents of each stream are HTTP requests and responses, just encoded and packed up differently. Where as, WebSocket adds a number of features to manage the streams, but leaves old semantics untouched.
+
+Q21. What is HTTPS?
+A21. Hypertext transfer protocol secure (HTTPS) is the secure version of HTTP, which is the primary protocol used to send data between a web browser and a website. HTTPS is encrypted in order to increase security of data transfer. 
+    This is particularly important when users transmit sensitive data, such as by logging into a bank account, email service, or health insurance provider. HTTPS uses an encryption protocol to encrypt communications. 
+
+Q22. What is Cross Origin Resource Sharing? ( CORS ) Why do we need it?
+A22. CORS (Cross-Origin Resource Sharing) is a mechanism by which data or any other resource of a site could be shared intentionally to a third party website when there is a need. Generally, access to resources that are residing in a third party site is restricted by the browser clients for security purposes.
+    It enables JavaScripts running in browsers to connect to APIs and other web resources like fonts, and stylesheets from multiple different providers.
+    The CORS protocol consists of a set of headers that indicates whether a response can be shared cross-origin. For requests that are more involved than what is possible with HTML’s form element, a CORS-preflight request is performed, to ensure the request’s current URL supports the CORS protocol.
+
+Q23. What does Access-Control-Allow-Origin header do?
+A23. The Access-Control-Allow-Origin is a response header that is used to indicates whether the response can be shared with requesting code from the given origin. 
+    Syntax:
+        Access-Control-Allow-Origin: * | <origin> | null
+    i) *: This directive tells the browsers to allow requesting code from any origin to access the resource. Used as a wildcard.
+    ii) <origin>: This directive defines any single origin.
+    iii) null: This directive defines null that should not be used due to any origin can create a hostile document with a “null” Origin. The “null” value for the ACAO(Access-Control-Allow-Origin) header should therefore, be avoided.”
+
+Q24. What is clickjacking? How do you fix it?
+A24. Clickjacking is an attack that fools users into thinking they are clicking on one thing when they are actually clicking on another. Its other name, user interface (UI) redressing, better describes what is going on. Users think they are using a web page’s normal UI, but in fact there is a hidden UI in control; 
+    in other words, the UI has been redressed. When users click something they think is safe, the hidden UI performs a different action.
+    There are three main ways to prevent clickjacking:
+    i) Sending the proper Content Security Policy (CSP) frame-ancestors directive response headers that instruct the browser to not allow framing from other domains. The older X-Frame-Options HTTP headers is used for graceful degradation and older browser compatibility.
+    ii) Properly setting authentication cookies with SameSite=Strict (or Lax), unless they explicitly need None (which is rare).
+    iii) Employing defensive code in the UI to ensure that the current frame is the most top level window.
+
+Q25. What are some performance metrics for your website?
+A25. i)  Website Speed
+    ii) Number of Assets
+    iii) Error Rate
+    iv) Bounce Rate
+    v) Top Pages Website
+    vi) Time to Start Render
+    vii)  Time to Interact
+    viii) Total Page Size
+    ix) Time to First Byte
+    x) Page load time
+
+Q26. What does the following term mean?
+A26.  Time to first byte- The time it takes for the first byte of information to reach a visitor’s browser after a connection to the server has been requested is called time to first byte, or TTFB.To improve your site’s TTFB, including optimizing code, implementing caching, fine-tuning your web server configuration, and upgrading your server hardware. 
+        The order in which site visitors receive information is also important and can help boost your TTFB.
+
+    Page load time- page load time is the average amount of time it takes for a page to show up on your screen.
+     optimizing your page load time is a great way to help users get where they're going faster-and happier shoppers are more easily converted into sales. 
+
+Q27. What do CDN or Content Delivery Networks do? When do you need a CDN?
+A27. A content delivery network (CDN) is a group of geographically distributed servers that speed up the delivery of web content by bringing it closer to where users are. Data centers across the globe use caching, a process that temporarily stores copies of files, so that you can access internet content from a web-enabled device or browser more quickly through a server near you.
+    DNs cache content like web pages, images, and video in proxy servers near to your physical location. This allows you to do things like watch a movie, download software, check your bank balance, post on social media, or make purchases, without having to wait for content to load.
+
+    Without CDNs, with their ability to replicate and store information from origin servers and then bring digital content close to where users access the web, the internet might be slowed to a crawl.
+
+Q28.What is the difference between Client Side Renderring and Server Side Renderring?
+A28.    Servers Side Renderring         |   Client Side Renderring
+                                        |
+    1) Ideal for static site’s          |   Ideal for web apps
+    2) Quick initial page access        |   slow initial load time
+    3) No JS dependecy                  |   requires extra library
+    4) Full Page reloads                |   fast site rendering after initial load
+    5) No rich site interactions        |   rich site interactions
+    6) Prone to vulnerability           |   Higher memory consumption
+
+Q29. What is Progressive Renderring?
+A29. In progressive Rendering, the web page is divided into different parts on the basis of priority. So different parts will be rendered sequentially according to Server-Side Rendering and sent to the client side. 
+    This means that here first whole page will not be rendered on the server instead, high priority part of the page is rendered and sent to the client side, then low priority part of the page is rendered and sent to the client side.
+    Benefits of Progressive Rendering:
+    i) It improves the load time of the website and that eventually leads to a better User Experience.
+    ii) It optimizes the critical rendering path. Critical rendering path is referred to those steps that are done between receiving HTML, CSS, and Javascript code and converting them into a visual webpage.
+    iii) It helps us to overcome the drawback of server-side rendering and client-side rendering.
+
+Q30. What is the difference between Preloading and Prefetching resources?
+A30. preload – load content that's required for the intial render
+    prefetch - load content that may be needed to render the next page
+
+Q31. What are service workers?
+A31. Service workers essentially act as proxy servers that sit between web applications, the browser, and the network (when available).
