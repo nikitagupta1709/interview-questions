@@ -1,0 +1,154 @@
+Q1. How to add comments on css?
+A1. A CSS comment is placed inside the <style> element, and starts with /* and ends with */:
+	/* This is a single-line comment */
+	p {
+  		color: red;
+	}
+
+Q2. Why do we use pseudo-class?
+A2. A pseudo-class is used to define a special state of an element.
+	For example, it can be used to:
+	i)  Style an element when a user mouses over it.
+	ii) Style visited and unvisited links differently.
+     iii) Style an element when it gets focus.
+	
+	The syntax of pseudo-classes:
+
+	selector:pseudo-class {
+  		property: value;
+	}
+	
+	a) :hover - example: When you hover over the link in the example, it will change color
+	b) :first-child pseudo-class matches a specified element that is the first child of another element.
+	c) :lang pseudo-class allows you to define special rules for different languages.
+	d) :active, Selects the active link
+	and many more.
+
+Q3. How is specificity applied?
+A3. If there are two or more CSS rules that point to the same element, the selector with the highest specificity value will "win", and its style declaration will be applied to that HTML element.
+	Think of specificity as a score/rank that determines which style declaration is ultimately applied to an element.
+	Start at 0, add 100 for each ID value, add 10 for each class value (or pseudo-class or attribute selector), add 1 for each element selector or pseudo-element.
+	Inline style gets a specificity value of 1000, and is always given the highest priority!.
+	inline > id(#) > class(.) > tag(p/h1) > universal(*)
+	1000	 100      10 	      1           0
+
+Q4. What method allows an element to be moved from its current position?
+A4. The translate() method moves an element from its current position (according to the parameters given for the X-axis and the Y-axis).
+	Example: The following example moves the <div> element 50 pixels to the right, and 100 pixels down from its current position
+		div {
+  			transform: translate(50px, 100px);
+		}
+		
+Q5. What properties does flex model have?
+A5. The flex property sets the flexible length on flexible items. It is a shorthand property for:
+	i)  flex-grow- A number specifying how much the item will grow relative to the rest of the flexible items.
+	ii) flex-shrink- A number specifying how much the item will shrink relative to the rest of the flexible items.
+	iii) flex-basis- The length of the item. Legal values: "auto", "inherit", or a number followed by "%", "px", "em" or any other length unit.
+	CSS Syntax
+     flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
+
+Q6. What is the difference between flex and grids?
+A6. i) Flexbox offers greater control over alignment and space distribution between items. Being one-dimensional, Flexbox only deals with either columns or rows.
+	  Grid has two-dimension layout capabilities which allow flexible widths as a unit of length. This compensates for the limitations in Flex.
+	
+   ii) Flex Direction allows developers to align elements vertically or horizontally, which is used when developers create and reverse rows or columns.
+	    CSS Grid deploys fractional measure units for grid fluidity and auto-keyword functionality to automatically adjust columns or rows.
+
+  iii) Flex Container is the parent element while Flex Item represents the children. The Flex Container can ensure balanced representation by adjusting item dimensions. This allows developers to design for fluctuating screen sizes.
+		Grid supports both implicit and explicit content placement. Its inbuilt automation allows it to automatically extend line items and copy values into the new creation from the preceding item.
+
+Q7.Give an example where we have to use grids and where you have to use flexbox?
+A7. CSS grid is for layout, flexbox is for alignment
+
+
+Q8. Give an example where you cannot use flexbox, and you can only use grids?
+A8. 
+
+Q9. What are combinators? give examples of how you can use them
+A9. A combinator is something that explains the relationship between the selectors.There are four different combinators in CSS:
+
+	i) descendant selector (space)- matches all elements that are descendants of a specified element.
+		div p {
+ 		  background-color: yellow;
+		}
+	ii) child selector (>)- selects all elements that are the children of a specified element.
+		div > p {
+  		  background-color: yellow;
+		}
+	iii) adjacent sibling selector (+)- selector is used to select an element that is directly after another specific element.
+		div + p {
+ 		  background-color: yellow;
+		}
+	iv)general sibling selector (~)- selects all elements that are next siblings of a specified element.
+		div ~ p {
+ 		 background-color: yellow;
+		}
+
+Q10. What does object-fit do?
+A10. The CSS object-fit property is used to specify how an <img> or <video> should be resized to fit its container.The object-fit property can take one of the following values:
+
+	i) fill - This is default. The image is resized to fill the given dimension. If necessary, the image will be stretched or squished to fit
+	ii) contain - The image keeps its aspect ratio, but is resized to fit within the given dimension
+	iii) cover - The image keeps its aspect ratio and fills the given dimension. The image will be clipped to fit
+	iv) none - The image is not resized
+	v) scale-down - the image is scaled down to the smallest version of none or contain
+
+
+Q11. What does rotate do?
+A11. The rotate() method rotates an element clockwise or counter-clockwise according to a given degree.The following example rotates the <div> element clockwise with 20 degrees:
+	Example:	div {
+			  transform: rotate(20deg);
+			}
+	Using negative values will rotate the element counter-clockwise.
+
+Q12. What rule can be used to define animation?
+A12. CSS allows animation of HTML elements without using JavaScript or Flash! you must first specify some keyframes for the animation.
+	Keyframes hold what styles the element will have at certain times.the animation will gradually change from the current style to the new style at certain times.
+	To get an animation to work, you must bind the animation to an element.
+
+	/* The animation code */
+	@keyframes example {
+	  from {background-color: red;}
+	  to {background-color: yellow;}
+	}
+
+	/* The element to apply the animation to */
+	div {
+	  width: 100px;
+	  height: 100px;
+	  background-color: red;
+	  animation-name: example;
+	  animation-duration: 4s;
+	}
+
+Q13. When working with attribute selectors, how can you select elements which contain a particular attribute value?
+A13. CSS [attribute ="value"] Selector is used to select elements with the specified attribute, whose value can be exactly the specified value, or the specified value followed by a hyphen (-).
+
+Q14. What does @media do?
+A14. The @media rule is used in media queries to apply different styles for different media types/devices.Media queries can be used to check many things, such as:
+
+	i) width and height of the viewport
+	ii) width and height of the device
+	iii) orientation (is the tablet/phone in landscape or portrait mode?)
+	iv) resolution
+	Example:
+  		@media screen and (max-width: 600px) {
+  			div.example {
+    			display: none;
+  			}
+		}
+
+Q15. What can be used to override properties of an element?
+A15. To override the CSS properties of a class using another class, we can use the !important directive. In CSS, !important means “this is important”, and the property:value pair that has this directive is always applied even if the other element has higher specificity.
+
+Q16. How can you select every alternate elements in a list of elements using css?
+A16. 
+
+
+
+
+
+
+
+
+
