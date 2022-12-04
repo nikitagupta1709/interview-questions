@@ -48,4 +48,86 @@ A4. Node.js is an open source server environment, uns on various platforms (Wind
     Node.js eliminates the waiting, and simply continues with the next request and runs single-threaded, non-blocking, asynchronous programming, which is very memory efficient.
 
 Q5. What is the difference of JS from browser to JS on node.js
-A5.  <img width="30px" src="https://miro.medium.com/max/828/1*13t_fITLmhxkWmp0HmZTnQ.webp" /> 
+A5. i) Browser.js is mainly used for client-side applications like validations on a web page or dynamic page display and as the name suggests it gets executed in the browser only while in the case of Node.js javascript code gets executed outside the browser as it is an interpreter as well as an environment for running javascript and used for server-side applications.
+    ii) Browser.js is used for frontend while Node.js is used for backend applications.
+    iii) Node.js has full system access i.e can read and write directly to the file system like any other application that also concludes that we can write complete software using Node.js while Browser.js is sandboxed for the safety purposes and have access limited to the browser. 
+    iv) Browser.js runs any engine like Spider monkey (Firefox), JavaScript Core (Safari), V8 (Google Chrome) accordingly to the browser while Node.js runs in a V8 engine which is mainly used by google chrome.
+    v) Node.js is headless i.e without any GUI while Bowsers are not headless.
+    vi) In Node.js everything is a module i.e it is mandatory to keep everything inside a module while moduling is not mandatory for browser javascript.
+
+Q6. Write three different ways to reverse a string in Javascript? 
+A6. a) using inbuilt method:
+
+        function reverseString(str) {
+            return str.split("").reverse().join("");
+        }
+        reverseString("hello");
+
+    b) iteratively:
+        function reverseString(str) {
+            var newString = "";
+            for (var i = str.length - 1; i >= 0; i--) {
+                newString += str[i];
+            }
+            return newString;
+        }
+        reverseString('hello');
+
+    c) recursively:
+        function reverseString(str) {
+            if (str === "")
+                return "";
+            else
+                return reverseString(str.substr(1)) + str.charAt(0);
+            }
+        reverseString("hello");
+
+Q7. Write a program to check two objects are equal ( deep equal ).
+A7. i) The deepEqual() method from the library takes three parameters. The first two are the operands to be compared, and the third parameter is an optional options parameter. With the option, we can specify whether to use strict equality (===) or coercive equality (==) to compare the leaf nodes. The default option is to use coercive equality to compare leaf nodes.
+        const deepEqual = require('deep-equal');
+
+        const person1 = {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 35 
+        }
+
+        const person2 = {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": "35" 
+        }
+
+        deepEqual(person1, person2); // true
+
+        Note that the age value is a number in the person1 object and a string in the person2 object. Since the strict option is false by default, the deep-equal library uses coercive equality on the leaf nodes, so this function returns true. If the strict parameter of the function is set to true, this method would return false.
+        const person2 = {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": "35" 
+        }
+
+        deepEqual(person1, person2, {strict: true}); // false
+    
+    ii) The deepStrictEqual() method provided by the assert module is a built-in method in Node.js that takes three parameters: the two operands and a message as an optional parameter that will be used when an error is thrown if the two operands are not equal. This method will check for strict equality on leaf nodes. It will return undefined if the operands are equal and will throw an error if they are not deep and strictly equal.
+        const assert = require('assert');
+
+        const person1 = {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 35 
+        }
+
+        const person2 = {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 35 
+        }
+
+        console.log(assert.deepStrictEqual(person1, person2)); //true
+
+Q8. What is shallow equal?
+A8. A function for performing a shallow comparison between two objects or arrays. Two values have shallow equality when all of their members are strictly equal to the corresponding member of the other.
+
+
+
