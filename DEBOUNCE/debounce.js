@@ -9,7 +9,7 @@ function debounce (func, timeout = 1000){
 }
 
 function saveInput(){
-    alert("data Saved");
+    alert("Debounce Function is used to limit the number of times any function is executed.");
     console.log('Saving data');
 }
 
