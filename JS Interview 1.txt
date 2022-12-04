@@ -1,5 +1,5 @@
 Q1. Give an example where call apply bind is. required?
-A2.  Call: The call() method invokes a function with a given this value and arguments provided one by one.
+A2. Call: The call() method invokes a function with a given this value and arguments provided one by one.
     Apply: Invokes the function with a given this value and allows you to pass in arguments as an array.
     Bind: returns a new function, allowing you to pass any number of arguments.
         Example:
