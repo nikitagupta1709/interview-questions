@@ -56,8 +56,18 @@ A6. The work done by Redux generally falls into a few areas: processing actions 
     to be done. Use of memoized selector functions is also an important performance consideration.
 
 Q7. How does Redux compare to the React Context API?
-A7. 
-
+    _ _ _ _ _ __ _ _ _ _ _ _ _ _ __ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A7. |            Context API                                 |   Redux                                                         |
+    |                                                        |                                                                 |
+    | i) useContext is a hook.                               |   Redux is a state management library.                          |
+    | ii) It is used to share data.                          |   It is used to manage data and state.                          |
+    | iii) Changes are made with the Context value.          |   Changes are made with pure functions i.e. reducers.           |
+    | iv) We can change the state in it.                     |   The state is read-only. We cannot change them directly.       |
+    | v) It re-renders all components whenever there         |   It only re-render the updated components.                     | 
+    |    is any update in the provider’s value prop.         |                                                                 |
+    |vi) It is better to use with small applications.        |   It is perfect for larger applications.                        |
+    |vii) It is easy to understand and requires less code.   |   It is quite complex to understand.                            |
+    |_ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ __ _ _ _ _ _ _ _ _ _|
 Q8. What is webpack ?
 A8. Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser.
 
