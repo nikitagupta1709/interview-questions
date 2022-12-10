@@ -1,0 +1,12 @@
+Q1. Explain redux to a 5 year old (ELI5) ?
+A1. Consider someone who has given you a task to get some chips out of a shopkeeper. The intention ( action ) you have in your mind is to get chips from the shop. In JavaScript, we can represent it as GET_CHIPS.
+    The first step when you enter the shop is to talk to a shopkeeper and ask them to get the chips out of the safe. You never just go to a shop and just went straight to the store, get your chips, and left. 
+    Redux Store ( Grocery Store ) - Chips is kept safely in the store. The store holds the state and keeps it safe.
+
+    Redux Actions - in the real world can be defined as a process of doing something. So in order to update anything in your state, we need to act on something. In our shop example, we need to act by talking to a shopkeeper and ask them to give you chips.
+    The action object always has a type field that describes the action you want to perform. In our case, it is GET_CHIPS.
+
+    Reducer ( Shopkeeper ) - there is no possible way of getting chips directly from the grocery store and we have to talk to the shopkeeper to get our chips. In our case, the shopkeeper is the reducer. It will go to the store and get the chips. The whole process is called dispatching an action.
+    Reducer ( Shopkeeper ) has the knowledge of how to update the state ( get the chips ) and ensure states get updated ( you get the chips ). Reducers will always return to the new state.
+
+    This was the whole process of geeting chips ( performing action ) by asking from shopkeeper ( using reducer to dispatch ) and geetting chips from grocery store ( Redux store ).
