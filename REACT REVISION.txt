@@ -10,3 +10,10 @@ A1. Consider someone who has given you a task to get some chips out of a shopkee
     Reducer ( Shopkeeper ) has the knowledge of how to update the state ( get the chips ) and ensure states get updated ( you get the chips ). Reducers will always return to the new state.
 
     This was the whole process of geeting chips ( performing action ) by asking from shopkeeper ( using reducer to dispatch ) and geetting chips from grocery store ( Redux store ).
+
+Q2. What is immutability?
+A2. In functional and in object-oriented programming, an object is considered as immutable when its state can’t be changed after it was created. 
+    Benefits of immutable objects - they can be helpful in multi-threaded applications where multiple threads can use data represented by immutable objects without concern of the data being changed by other threads.
+
+Q3. What does Object.freeze() do?
+A3. 
