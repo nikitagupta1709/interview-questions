@@ -38,5 +38,28 @@ A3. The Object.freeze() method freezes an object. Freezing an object prevents ex
     console.log(obj.prop);
     // expected output: 42
 
-Q4. 
-A4. 
+Q4. Why is immutability required by Redux?
+A4. Immutability of redux state is necessary since it allows detecting redux state changes in an efficient manner. This implies that whenever we want to modify a redux state, we must create 
+    a new copy of it and do modifications to that copy - which then becomes the new redux state.
+
+Q5. How does Redux use shallow equality checking?
+A5. React-Redux uses shallow equality checking to determine whether the component it's wrapping needs to be re-rendered. To do this, it assumes that the wrapped component is pure; that is, 
+    that the component will produce the same results given the same props and state.
+
+Q6. How well does Redux “scale” in terms of performance and architecture?
+A6. The work done by Redux generally falls into a few areas: processing actions in middleware and reducers, notifying subscribers after actions are dispatched, 
+    and updating UI components based on the state changes. React Redux in particular is heavily optimized to cut down on unnecessary re-renders, and React-Redux v5 shows 
+    noticeable improvements over earlier versions.
+    
+    Redux may not be as efficient out of the box when compared to other libraries. For maximum rendering performance in a React application, state should be stored in a normalized shape, many individual 
+    components should be connected to the store instead of just a few, and connected list components should pass item IDs to their connected child list items. This minimizes the overall amount of rendering 
+    to be done. Use of memoized selector functions is also an important performance consideration.
+
+Q7. How does Redux compare to the React Context API?
+A7. 
+
+Q8. What is webpack ?
+
+Q9. What is treeshaking ?
+
+Q10. What are some features of using webpack?
