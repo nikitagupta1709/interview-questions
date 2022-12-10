@@ -67,7 +67,7 @@ A7. |            Context API                                 |   Redux          
     |    is any update in the provider’s value prop.         |                                                                 |
     |vi) It is better to use with small applications.        |   It is perfect for larger applications.                        |
     |vii) It is easy to understand and requires less code.   |   It is quite complex to understand.                            |
-    |_ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ __ _ _ _ _ _ _ _ _ _|
+    |_ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ __ _ _ _ _ _ _ _ _ |
 Q8. What is webpack ?
 A8. Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser.
 
