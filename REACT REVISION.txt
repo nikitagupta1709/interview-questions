@@ -59,7 +59,16 @@ Q7. How does Redux compare to the React Context API?
 A7. 
 
 Q8. What is webpack ?
+A8. Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser.
 
 Q9. What is treeshaking ?
+A9. Tree shaking is a term commonly used within a JavaScript context to describe the removal of dead code.
+    It relies on the import and export statements to detect if code modules are exported and imported for use between JavaScript files.
 
 Q10. What are some features of using webpack?
+A10. Features of Webpack: There are many features of webpack as follows:
+    
+    i) Entry: We all know webpack makes a dependency graph and the starting of this graph is known as the entry or entry point. From the starting point of the dependency graph, it will follow all the dependencies to know what it has to bundle.
+    ii) Output: Output tells webpack where to put the bundles that it had made and what will be its format.
+    iii) Loaders: Loaders convert different types of files like images and CSS into a module before adding them to the dependency graph.
+    iv) Plugins: Plugins provide functionality. It can provide much functionality like printing something on running the webpack, minifying, optimization of bundles, etc.
