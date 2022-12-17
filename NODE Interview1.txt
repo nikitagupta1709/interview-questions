@@ -1,0 +1,27 @@
+Q1. Explain in brief what is node js?
+A1. Node.js is an open-source and cross-platform runtime environment for executing JavaScript code outside a browser. NodeJS is not a framework and it’s not a programming language.
+    We often use Node.js for building back-end services like APIs like Web App or Mobile App. It’s used in production by large companies such as Paypal, Uber, Netflix, Walmart, and so on.
+    Features of NodeJS: 
+    i) It’s easy to get started.
+    ii) It provides fast and highly scalable services.
+    iii) It uses JavaScript everywhere, so it’s easy for a JavaScript programmer to build back-end services using Node.js
+    iv) Source code cleaner and consistent.
+    v) Large ecosystem for open source library.
+    vi) It has Asynchronous or Non-blocking nature.
+
+
+Qw2. How is node js non-blocking?
+A2. Node.js is based on an event-driven non-blocking I/O model. It refers to the program that does not block the execution of further operations. Non-Blocking methods are executed asynchronously. 
+    Asynchronously means that the program may not necessarily execute line by line. The program calls the function and move to the next operation and does not wait for it to return.
+
+Q3. What is throughput?
+A3.  Throughput tells you how much data was transferred from a source at any given time.
+
+Q4. How is Node js having high IO throughput?
+A4. i) Node.js is asynchronous and single-threaded. This means that all I/O operations don’t block any other operations. It also means that you can send emails, read files, query the database, etc. all at the same time.
+    ii) Each request to the web-server won’t create a separate Node.js process. Although, one Node.js process would run at all times which would listen to the connections. JavaScript code is also executed in the process’ 
+         thread while all other I/O operations are executed in separate threads which results in almost no delays.
+    iii) The virtual machine in Node.js (V8) which is responsible for executing JavaScript consists of a JIT compilation. The virtual machine can take the source code to compile it into the machine code at runtime. 
+         It means that all the “hot” functions that get called often than not can be compiled to the machine code thus boosting the execution speed.
+
+Q5. 
