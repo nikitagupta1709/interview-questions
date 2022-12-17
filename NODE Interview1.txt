@@ -24,4 +24,31 @@ A4. i) Node.js is asynchronous and single-threaded. This means that all I/O oper
     iii) The virtual machine in Node.js (V8) which is responsible for executing JavaScript consists of a JIT compilation. The virtual machine can take the source code to compile it into the machine code at runtime. 
          It means that all the “hot” functions that get called often than not can be compiled to the machine code thus boosting the execution speed.
 
-Q5. 
+Q5. What are CPU intensive tasks?
+A5. They are complex user actions that eat up more RAM. A few of such processes can shut down your server entirely.
+    Handling CPU Intensive tasks:
+    i) More Powerful server
+    ii) Additional server
+    iii) Separate instance for each task
+    iv) AWS Lamba
+
+Q6. How can you end up blocking your main thread in node.js?
+A6. Node.js uses a small number of threads to handle many clients. In Node.js there are two types of threads: one Event Loop (aka the main loop, main thread, event thread, etc.), and a pool of k Workers in a Worker Pool (aka the threadpool).
+    If a thread is taking a long time to execute a callback (Event Loop) or a task (Worker), we call it "blocked". While a thread is blocked working on behalf of one client, it cannot handle requests from any other clients. 
+    This provides two motivations for blocking neither the Event Loop nor the Worker Pool:
+    i) Performance: If you regularly perform heavyweight activity on either type of thread, the throughput (requests/second) of your server will suffer.
+    ii) Security: If it is possible that for certain input one of your threads might block, a malicious client could submit this "evil input", make your threads block, and keep them from working on other clients. This would be a Denial of Service attack.
+
+Q7. What is the event loop?
+A7. The event loop allows Node.js to perform non-blocking I/O operations despite the fact that JavaScript is single-threaded. It is done by assigning operations to the operating system whenever and wherever possible.
+    Features of Event Loop:
+    i) Event loop is an endless loop, which waits for tasks, executes them and then sleeps until it receives more tasks.
+    ii) The event loop executes tasks from the event queue only when the call stack is empty i.e. there is no ongoing task.
+    iii) The event loop allows us to use callbacks and promises.
+    iv) The event loop executes the tasks starting from the oldest first.
+
+Q8. What are different phases in event loop?
+A8. When Node.js finished executing the index.js in the main thread, the Node.js event loop starts to execute the callbacks registered during the main thread’s runtime.
+    Callback queue: There’s a callback queue in each phase that stores callbacks to be executed in that phase. It’s very similar to the Task queue provided by a browser.
+    i) Timers: This is the first phase in the event loop. It finds expired timers in every iteration (also known as Tick) and executes the timers callbacks created by setTimout and setInterval.
+    ii) 
