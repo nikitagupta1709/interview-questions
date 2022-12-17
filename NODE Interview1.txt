@@ -51,4 +51,265 @@ Q8. What are different phases in event loop?
 A8. When Node.js finished executing the index.js in the main thread, the Node.js event loop starts to execute the callbacks registered during the main thread’s runtime.
     Callback queue: There’s a callback queue in each phase that stores callbacks to be executed in that phase. It’s very similar to the Task queue provided by a browser.
     i) Timers: This is the first phase in the event loop. It finds expired timers in every iteration (also known as Tick) and executes the timers callbacks created by setTimout and setInterval.
-    ii) 
+    ii) Pending callbacks: It handles I/O callbacks deferred to the next iteration, such as handling TCP socket connection error.
+    iii) Idle, prepare: It’s only used internally.
+    iv) Poll: The Poll phase calculates the blocking time in every iteration to handle I/O callbacks. In this phase, the epoll_wait() system call is invoked (in Linux).
+    v) Check: This phase handles the callbacks scheduled by setImmediate(), and the callbacks will be executed once the Poll phase becomes idle.
+    vi) Close Callback: This phase handles callbacks if a socket or handle is closed suddenly and the ‘close’ event will be emitted.
+    vii) The microtask queue: Microtasks are executed after the main thread and each phase of the event loop. Microtasks created by process.nextTick() are executed before those created by then() and catch().
+
+Q9. What is process.tick?
+A9. The process object is one of the few global objects provided by the NodeJS core API. It can be accessed from anywhere, thus its methods can also be accessed. Such is a method called process.nextTick() 
+    which is used by developers in real-time applications every day to defer the execution of a function until the next Event Loop Iteration.
+
+Q10. When can process.tick starve your event loop?
+A10. Any time you call process.nextTick() in a given phase, all callbacks passed to process.nextTick() will be resolved before the event loop continues. This can create some bad situations because it allows 
+    you to "starve" your I/O by making recursive process.nextTick() calls, which prevents the event loop from reaching the poll phase.
+
+Q11. What is the difference between setTimeout and setInterval?
+A11. setTimeout() Method: This method executes a function, after waiting a specified number of milliseconds. ( setTimeout(function, milliseconds); )
+     setInterval() Method: This method repeats a given function at every given time interval. ( setInterval(function, milliseconds); )
+
+Q12. How can you make a network request with http module from the backend?
+A12. NodeJS have built in HTTP module to make network request. But the drawbacks is that, it is not too user friendly like the other solution. You, need to manually parse the data after received.
+     It is a built-in module, doesn’t need to install.
+        // Importing https module
+        const http = require('http');
+        
+        // Setting the configuration for the request
+        const options = {
+            hostname: 'jsonplaceholder.typicode.com',
+            path: '/posts',
+            method: 'GET'
+        };
+            
+        // Sending the request
+        const req = http.request(options, (res) => {
+            let data = ''
+            
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            
+            // Ending the response 
+            res.on('end', () => {
+                console.log('Body:', JSON.parse(data))
+            });
+            
+        }).on("error", (err) => {
+            console.log("Error: ", err)
+        }).end()
+
+Q13. How can you create your own events?
+A13. To create a custom event we use the Event constructor or CustomEvent interface. 
+    The Event constructor creates an Event and CustomEvent creates an Event with more functionality.
+    i) Event:   a)We create an event using the Event constructor.
+                b)We listen to this event using the addEventListener() method.
+                c)We trigger or dispatch the event using element.dispatchEvent(eventName) method.
+                d)A custom Event named start has now been created.
+            // To assign event
+            const startEvent = new Event("start");
+
+            // To trigger the event Listener
+            document.addEventListener("start", () => {
+                console.log("The start event was triggered")
+            });
+
+            // To trigger the Event
+            document.dispatchEvent(startEvent);
+    ii) CustomEvent: Creating custom events using the CustomEvent interface has an advantage as it can send custom data. The below steps are followed in order to create a new CustomEvent.
+
+                a)We create a custom event using the CustomEvent constructor.
+                b)This takes two arguments, the first is the name of the event and the second is an object that contains the data. The property name inside the object name should be named detail otherwise it won’t work.
+                c)We create a listener for this event.
+                d)We trigger or dispatch the event.
+                e)A custom event that contains data has been created.
+            // To assign event
+            const event = new CustomEvent("start", {
+                detail: {
+                    platform : "GeeksforGeeks"
+                }
+            });
+
+            // To trigger the event Listener
+            document.addEventListener('start', (e)=>{
+                console.log(
+                    `start event triggered on platform :
+                    ${e.detail.platform}`
+                    );
+            });
+
+            // To trigger the Event
+            document.dispatchEvent(event);
+
+Q14. What are clusters?
+A14. A cluster is a group of inter-connected computers or hosts that work together to support applications and middleware (e.g. databases).
+    Clustering is a technique used to horizontally scale a Node.js server on a single machine by spawning child processes (workers) that 
+    run concurrently and share a single port. It is a common tactic to reduce downtime, slowdowns and outages by distributing the incoming 
+    connections across all the available worker processes so that available CPU cores are utilized to their full potential. Since a Node.js 
+    instance runs on a single thread, it cannot take advantage of multi-core systems properly - hence the need for clustering.
+
+Q15. How does your Node.js application handle scale? Elaborate.
+A15. Scalability is built in the very core of the runtime. It is scalable due to load balancing. Essentially you can have multiple jobs for 
+    node to process and it can handle it with no significant burden. This makes it scalable.
+    i) Profile and Monitor Your Application
+    ii) Reduce Latency Through Caching
+    iii) Use Timeouts When Dealing with I/O Operations
+    iv) Don't Serve Static Assets with Node.js
+    v) Use Clustering to Improve Throughput
+    vi) Scale across Multiple Machines with a Load Balancer
+    vii) Utilize Worker Threads for CPU-intensive Tasks
+
+Q16. What is the difference between readFile and readFileSync?
+A16.               readFile                             |             readFileSync
+     i) readFile is non-blocking async                  |   readFileSync is blocking sync.
+    ii) const fs=require('fs');                         |   const fs=require('fs');
+        fs.readFile('test.txt','utf-8',(err,data)=>{    |   var contents = fs.readFileSync('test.txt', 'utf8');
+                if(err){                                |   console.log(contents);    
+                    console.log(err);                   |   console.log(" -->The end<-- ");
+                }                                       |   
+                else{                                   |
+                    console.log(data);                  |
+                }                                       |
+            });                                         |
+            console.log(" -->The end<-- ");             |
+                                                        |
+        readFile() method uses a callback function.     |   readFileSync() method uses a variable to store the file content and then
+        Due to its non-blocking nature, the program     |   delivers it. Due to its blocking nature, the program waits till the file is read
+        wont wait for the file to be read completely.   |   completely. So that the -->The end<-- message will be printed only
+        So that the -->The end<-- message will be       |   after the content is delivered.
+        printed in first or in between the file content.|
+
+Q17. What are CORS? How do you configure them? Why do you need them?
+A17. Cross-origin resource sharing (CORS) defines a way for client web applications that are loaded in one domain to interact with resources in a different domain.
+    
+    Need:- Cross-domain requests in JavaScript are restricted by the same-origin policy, which is a security standard enforced by the browser. It states that scripts loaded 
+    on one domain can only request resources that originate from the same domain. The purpose of the same-origin policy is to prevent attacks by malicious scripts.
+
+Q18. What is rate limiting?
+A18. Rate limiting is a strategy for limiting network traffic. It puts a cap on how often someone can repeat an action within a certain timeframe – for instance, trying to log 
+    in to an account. Rate limiting can help stop certain kinds of malicious bot activity. It can also reduce strain on web servers. However, rate limiting is not a complete solution for managing bot activity.
+    It prevent bot attacks such as Brute force attacks, Dos, DDos attacks, and Web scraping.
+    A rate limiting solution measures the amount of time between each request from each IP address, and also measures the number of requests within a specified timeframe. 
+    If there are too many requests from a single IP within the given timeframe, the rate limiting solution will not fulfill the IP address's requests for a certain amount of time.
+
+Q19. How does middlewares work in express?
+A19. Middleware is a framework for handling the different routing of the webpage and it works between the request and response cycle. Middleware gets executed after the server receives 
+    the request and before the controller actions send the response. Middleware has the access to the request object, responses object, and next, it can process the request before the 
+    server send a response. An Express-based application is a series of middleware function calls.
+    function middlewareFunction(request, response, next) {
+	    // execute something
+    }
+    i) An Express request object (commonly named req) – this is an extended instance of Node.js’ built-in http.IncomingMessage class.
+    ii) An Express response object (commonly named res) – this is an extended instance of Node.js’ built-in http.ServerResponse class.
+    iii) An Express next() function – Once the middleware function has completed its tasks, it must call the next() function to hand off control to the next middleware. If you pass an argument to it, 
+        Express assumes it to be an error. It will skip any remaining non-error handling middleware functions and start executing error handling middleware.
+    iv) Middleware functions should not return a value. Any value returned by middleware will not be used by Express.
+
+Q20. What is the difference between Encryption and Hashing?
+A20.    Hashing                                                                             Encryption
+    i) It is a process to convert information to a shorter fixed value known |  It is the process to encode data securely such that only the authorized user who knows the key or 
+    as the key that is used to represent the original information.           |  password is able to retrieve the original data for everyone else it is just garbage. 
+
+    ii) The purpose of hashing is indexing and retrieving items from the     |  The purpose of encryption is to transform data to keep it secret from others.
+        database. The process is very fast.                                  |
+    
+    iii) It is more secure in comparison to encryption.                      |  It is less secure in comparison to hashing.
+    iv) small and fixed length.                                              | no fixed length and increase with length of information.
+
+Q21. What is the difference between https and http?
+A21. i) HTTP stands for HyperText Transfer Protocol and HTTPS stands for HyperText Transfer Protocol Secure.
+    ii) In HTTP, URL begins with “http://” whereas URL starts with “https://”
+    iii) HTTP uses port number 80 for communication and HTTPS uses 443
+    iv) HTTP is considered to be insecure and HTTPS is secure
+    v) HTTP Works at Application Layer and HTTPS works at Transport Layer
+    vi) In HTTP, Encryption is absent and Encryption is present in HTTPS as discussed above
+    vii) HTTP does not require any certificates and HTTPS needs SSL Certificates
+    viii) HTTP speed is faster than HTTPS and HTTPS speed is slower than HTTP
+    ix) HTTP does not improve search ranking while HTTPS improves search ranking.
+    x) HTTP does not use data hashtags to secure data, while HTTPS will have the data before sending it and return it to its original state on the receiver side.
+    xi) HTTP used to transfer the text, video, images via web pages while HTTPS used to transfer data securely via network.
+    xii) HTTP is unreliable while HTTPS is reliable.
+    xiii) HTTP can be Hacked but HTTPS cannot be hacked
+
+Q22. What is TLS?
+A22. Transport Layer Securities (TLS) are designed to provide security at the transport layer. TLS was derived from a security protocol called Secure Socket Layer (SSL). 
+    TLS ensures that no third party may eavesdrop or tampers with any message. There are several benefits of TLS: 
+    i) Encryption: TLS/SSL can help to secure transmitted data using encryption.
+    ii) Interoperability: TLS/SSL works with most web browsers, including Microsoft Internet Explorer and on most operating systems and web servers.
+    iii) Algorithm flexibility: TLS/SSL provides operations for authentication mechanism, encryption algorithms and hashing algorithm that are used during the secure session.
+    iv) Ease of Deployment: Many applications TLS/SSL temporarily on a windows server 2003 operating systems.
+    v) Ease of Use: Because we implement TLS/SSL beneath the application layer, most of its operations are completely invisible to client. 
+
+Q23. What is AES?
+A23. Advanced Encryption Standard (AES) is a specification for the encryption of electronic data established by the U.S National Institute of Standards and Technology (NIST) in 2001. 
+    AES is widely used today as it is a much stronger than DES and triple DES despite being harder to implement.
+    Points to remember
+    i)  AES is a block cipher.
+    ii) The key size can be 128/192/256 bits.
+    iii) Encrypts data in blocks of 128 bits each.
+
+Q24. What is JWT Token? Why do we need to use JWT? What are some pros and cons?
+A24. Definition:- JWTs or JSON Web Tokens are most commonly used to identify an authenticated user. They are issued by an authentication server and are consumed by the client-server (to secure its APIs).
+    They contain JSON objects which have the information that needs to be shared. Each JWT is also signed using cryptography (hashing) to ensure that the JSON contents (also known as JWT claims) 
+    cannot be altered by the client or a malicious party.
+
+    Need:- If the auth server sends it as a plain JSON, the client application’s APIs would have no way to verify that the content they are receiving is correct. A malicious attacker could, 
+    for example, change the user ID (sub claim in the above example JSON), and the application’s APIs would have no way to know that that has happened. Due to this security issue, the auth server 
+    needs to transmit this information in a way that can be verified by the client application, and this is where the concept of a “token” comes into the picture.
+
+    Pros:- i) Secure, ii) Stored only on the client, and iii) Efficient / Stateless
+
+    Cons:- i) Non-revocable , and ii) Dependent on a sceret key
+
+Q25. What is salting? Where do we store salt?
+A25. A salt is added to the hashing process to force their uniqueness, increase their complexity without increasing user requirements, and to mitigate password attacks like hash tables.
+    in cryptography, salt plays a significant role in the breach of data. While creating applications, security is usually not the biggest priority. While data leaks can sometimes happen, 
+    hash salting generators only come to mind when there is a major invasion of privacy that affects the majority of the consumers’ applications. Salting refers to adding random data to a 
+    hash function to obtain a unique output which refers to the hash. Even when the same input is used, it is possible to obtain different and unique hashes. These hashes aim to strengthen security, 
+    protect against dictionary attacks, brute-force attacks, and several others.
+
+    Storing: The salt can and should be stored right next to the salted and hashed password. Additionally, the salt should be unique per password. Its purpose is to make it unfeasible to attack a 
+                leaked password database by using precomputed tables of password-hash-pairs.
+
+Q26. What is the difference between authorisation and Authentication?
+A26. i) In the authentication process, the identity of users are checked for providing the access to the system.
+        While in authorization process, a the person’s or user’s authorities are checked for accessing the resources.
+
+    ii) In the authentication process, users or persons are verified.
+        While in this process, users or persons are validated.
+    
+    iii) It is done before the authorization process.	
+        While this process is done after the authentication process.
+    
+    iv) It needs usually the user’s login details.	
+        While it needs the user’s privilege or security levels.
+    
+    v) Authentication determines whether the person is user or not.
+        While it determines What permission does the user have?
+    
+    vi) Generally, transmit information through an ID Token.	
+        Generally, transmit information through an Access Token.
+    
+    vii) Example: Employees in a company are required to authenticate through the network before accessing their company email.	
+        Example: After an employee successfully authenticates, the system determines what information the employees are allowed to access. 
+
+Q27. What is the difference between JS on the browser and node?
+A27. i) Browser.js is mainly used for client-side applications like validations on a web page or dynamic page display and as the name suggests it gets executed in the browser only 
+        while in the case of Node.js javascript code gets executed outside the browser as it is an interpreter as well as an environment for running javascript and used for server-side applications.
+    ii) Browser.js is used for frontend 
+        while Node.js is used for backend applications.
+    iii) Node.js has full system access i.e can read and write directly to the file system like any other application that also concludes that we can write complete software using Node.js 
+        while Browser.js is sandboxed for the safety purposes and have access limited to the browser. 
+    iv) Browser.js runs any engine like Spider monkey (Firefox), JavaScript Core (Safari), V8 (Google Chrome) accordingly to the browser 
+        while Node.js runs in a V8 engine which is mainly used by google chrome.
+    v) Node.js is headless i.e without any GUI 
+        while Bowsers are not headless.
+    vi) In Node.js everything is a module i.e it is mandatory to keep everything inside a module 
+        while moduling is not mandatory for browser javascript.
+
+Q28. What is V8?
+A28. Chrome V8 is a JavaScript engine, which means that it executes JavaScript code. Originally, JavaScript was written to be executed 
+    by web browsers. Chrome V8, or just V8, can execute JavaScript code either within or outside of a browser, which makes server-side scripting possible.
+    Chrome V8 is fast and powerful. V8 translates JavaScript code directly into machine code* so that computers can actually understand it, 
+    then it executes the translated, or compiled, code. V8 optimizes JavaScript execution as well.
