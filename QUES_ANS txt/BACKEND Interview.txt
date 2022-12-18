@@ -63,4 +63,94 @@ A7. i) Hierarchical databases: his database follows the progression of data bein
             availability. MongoDB falls in the category of NoSQL document-based database. 
 
 Q8. What are message queues?
-A8. 
+A8. A message queue is a form of asynchronous service-to-service communication used in serverless and microservices architectures. Messages are stored 
+    on the queue until they are processed and deleted. Each message is processed only once, by a single consumer. Message queues can be used to decouple 
+    heavyweight processing, to buffer or batch work, and to smooth spiky workloads.
+
+Q9. Which service by Amazon Web Services (AWS) can you use for Queues?
+A9. Amazon Simple Queue Service (SQS) lets you send, store, and receive messages between software components at any volume, without losing messages or 
+    requiring other services to be available. Use Cases:
+    i) Increase application reliability and scale
+    ii) Decouple microservices and process event-driven applications
+    iii) Ensure work is completed cost-effectively and on time
+    iv) Maintain message ordering with deduplication
+
+Q10. What is Pub Sub ?
+A10. Pub/Sub is an asynchronous and scalable messaging service that decouples services producing messages from services processing those messages.
+    Pub/Sub allows services to communicate asynchronously, with latencies on the order of 100 milliseconds. Pub/Sub enables you to create systems of 
+    event producers and consumers, called publishers and subscribers. Publishers communicate with subscribers asynchronously by broadcasting events, 
+    rather than by synchronous remote procedure calls (RPCs).
+
+Q11. What are webhooks?
+A11. A webhook is an HTTP-based callback function that allows lightweight, event-driven communication between 2 application programming interfaces (APIs). 
+    Webhooks are used by a wide variety of web apps to receive small amounts of data from other apps, but webhooks can also be used to trigger automation 
+    workflows in GitOps environments.
+    i) Eliminate the need for polling.
+    ii) Are quick to set up.
+    iii) Automate data transfer.
+    iv) Are good for lightweight, specific payloads.
+
+Q12. What is Docker? Why do we use it?
+A12. Docker is an open source containerization platform. It enables developers to package applications into containers—standardized executable components 
+    combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment. 
+    We use Docker as it has enhanced the native Linux containerization capabilities with technologies that enable:
+    i) Improved—and seamless—portability
+    ii) Even lighter weight and more granular updates
+    iii) Automated container creation
+    iv) Container versioning
+    v) Container reuse
+    vi) Shared container libraries
+
+Q13. What is S3 Service in AWS?
+A13. Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. 
+    Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile 
+    applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics. Amazon S3 provides management features so that you can 
+    optimize, organize, and configure access to your data to meet your specific business, organizational, and compliance requirements.
+
+Q14. What is EC2 Instance in AWS?
+A14. Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) Cloud. Using Amazon EC2 eliminates your need to 
+    invest in hardware up front, so you can develop and deploy applications faster. You can use Amazon EC2 to launch as many or as few virtual servers as you need, 
+    configure security and networking, and manage storage. Amazon EC2 enables you to scale up or down to handle changes in requirements or spikes in popularity, 
+    reducing your need to forecast traffic.
+
+Q15. What is Cloudfront in AWS?
+A15. Amazon CloudFront is a web service that speeds up distribution of your static and dynamic web content, such as . html, . css, . js, and image files, to your 
+    users. CloudFront delivers your content through a worldwide network of data centers called edge locations.
+
+Q16. What is Route 53 in AWS?
+A16. Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. You can use Route 53 to perform three main functions in any 
+    combination: domain registration, DNS routing, and health checking.
+
+Q17. What are ELBs in AWS?
+A17. Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or 
+    more Availability Zones. It monitors the health of its registered targets, and routes traffic only to the healthy targets. Elastic Load Balancing scales your 
+    load balancer capacity automatically in response to changes in incoming traffic.
+
+Q18. What is TLS?
+A18. Transport Layer Securities (TLS) are designed to provide security at the transport layer. TLS was derived from a security protocol called Secure Socket Layer (SSL). 
+    TLS ensures that no third party may eavesdrop or tampers with any message. There are several benefits of TLS: 
+    i) Encryption: TLS/SSL can help to secure transmitted data using encryption.
+    ii) Interoperability: TLS/SSL works with most web browsers, including Microsoft Internet Explorer and on most operating systems and web servers.
+    iii) Algorithm flexibility: TLS/SSL provides operations for authentication mechanism, encryption algorithms and hashing algorithm that are used during the secure session.
+    iv) Ease of Deployment: Many applications TLS/SSL temporarily on a windows server 2003 operating systems.
+    v) Ease of Use: Because we implement TLS/SSL beneath the application layer, most of its operations are completely invisible to client. 
+
+Q19. What is the difference between https and http?
+A19. i) HTTP stands for HyperText Transfer Protocol and HTTPS stands for HyperText Transfer Protocol Secure.
+    ii) In HTTP, URL begins with “http://” whereas URL starts with “https://”
+    iii) HTTP uses port number 80 for communication and HTTPS uses 443
+    iv) HTTP is considered to be insecure and HTTPS is secure
+    v) HTTP Works at Application Layer and HTTPS works at Transport Layer
+    vi) In HTTP, Encryption is absent and Encryption is present in HTTPS as discussed above
+    vii) HTTP does not require any certificates and HTTPS needs SSL Certificates
+    viii) HTTP speed is faster than HTTPS and HTTPS speed is slower than HTTP
+    ix) HTTP does not improve search ranking while HTTPS improves search ranking.
+    x) HTTP does not use data hashtags to secure data, while HTTPS will have the data before sending it and return it to its original state on the receiver side.
+    xi) HTTP used to transfer the text, video, images via web pages while HTTPS used to transfer data securely via network.
+    xii) HTTP is unreliable while HTTPS is reliable.
+    xiii) HTTP can be Hacked but HTTPS cannot be hacked.
+
+Q20. What is a reverse proxy?
+A20. A reverse proxy is a server that sits in front of web servers and forwards client (e.g. web browser) requests to those web servers. Reverse proxies are typically 
+    implemented to help increase security, performance, and reliability. With a reverse proxy, when clients send requests to the origin server of a website, those requests 
+    are intercepted at the network edge by the reverse proxy server. The reverse proxy server will then send requests to and receive responses from the origin server.
