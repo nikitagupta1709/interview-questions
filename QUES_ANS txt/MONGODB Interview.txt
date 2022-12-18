@@ -1,2 +1,74 @@
 Q1. What are SQL Databases? What are some companies that use Mongo, what type of applications are these?
-A1. SQL stands for Structured Query Language. It's used for relational databases. A SQL database is a collection of tables that stores a specific set of structured data.
+A1. SQL stands for Structured Query Language. It's used for relational databases. A SQL database is a collection of tables that stores a 
+    specific set of structured data.
+    
+    Currently, more than 31,000 companies are using MongoDB to build scalable applications and accelerate digital innovation. Leading companies
+    like Forbes, Toyota, Flobiz, Marcello, and others are MongoDB customers.
+
+    MongoDB performs brilliantly in applications that require data to be unstructured. For instance, various MapReduce Applications, Big-Data 
+    systems,Social Networking applications, News Forums, etc. In such use-cases, it is difficult to structure data across tables.
+
+Q2. What are NoSQL Databases?
+A2. NoSQL databases (aka "not only SQL") are non-tabular databases and store data differently than relational tables. NoSQL databases come 
+    in a variety of types based on their data model. The main types are document, key-value, wide-column, and graph.
+
+Q3. What is the difference between SQL and NoSQL databases?
+A3.                     SQL	                                        |                    NoSQL
+    RELATIONAL DATABASE MANAGEMENT SYSTEM (RDBMS)	                |   Non-relational or distributed database system.
+    These databases have fixed or static or predefined schema	    |   They have dynamic schema
+    These databases are not suited for hierarchical data storage.   |	These databases are best suited for hierarchical data storage.
+    These databases are best suited for complex queries.            |   These databases are not so good for complex queries
+    Vertically Scalable	                                            |   Horizontally scalable
+    Follows ACID property	                                        |   Follows CAP(consistency, availability, partition tolerance)
+    Examples: MySQL, PostgreSQL, Oracle, MS-SQL Server, etc	        |   Examples: MongoDB, GraphQL, HBase, Neo4j, Cassandra, etc
+
+Q4. What are some features of MongoDB?
+A4. Features of MongoDB –
+    i) Schema-less Database
+    ii) Document Oriented
+    iii) Indexing
+    iv) Scalability
+    v) Replication
+    vi) Aggregation
+    vii) High Performance
+
+Q5. What are aggregate queries?
+A5. For doing huge computations, in MongoDB, we use aggregation. Aggregation groups the data from multiple documents and provides the summed 
+    up results, the average value from a large result set, min/max value from a large result set, etc. In this article, let us see how we can 
+    perform Aggregation using Mongoose.
+
+Q6. What are pipelines in aggregation?
+A6. An aggregation pipeline consists of one or more stages that process documents: Each stage performs an operation on the input documents. 
+    For example, a stage can filter documents, group documents, and calculate values. The documents that are output from a stage are passed 
+    to the next stage.
+
+Q7. How do you do aggregate queries?
+A7. Common Aggregate Queries:- 
+    i) Compute the average value from a numeric sequence
+    ii) Count the number of elements in a sequence
+    iii) Count the number of records (entries) in a column or table
+    iv) Find the maximum value in a numeric sequence
+    v) Find the minimum value in a numeric sequence
+    vi) Compute the sum of values in a numeric sequence
+    vii) Compute the standard deviation of a numeric sequence.
+
+Q8. How can you group by a particular value in MongoDB?
+A8. The $group operator is an aggregation operator or an aggregation stage, which groups multiple data or documents by some specified expression 
+    and combines them into a single document. 
+    Syntax: $group operator 
+    {
+        $group:
+        {
+            _id: <expression>,
+            <field>: { <accumulator> : <expression> }
+        }
+    }
+    _id: It is the field by which you want to group the documents.
+    field: It is an optional parameter, and it is the computed field after performing certain accumulator operations on the grouped data.
+
+Q9. How can you paginate on MongoDB?
+A9. The most important use of paging implementation is it used the skip, limit, and sort in database level.
+    1) MongoDB pagination by using limit method
+        db.collection_name.find () .limit (number);
+    2) MongoDB pagination by using skip method
+        db.collection_name.find () .skip (number);
