@@ -1,0 +1,2 @@
+Q1. What are SQL Databases? What are some companies that use Mongo, what type of applications are these?
+A1. SQL stands for Structured Query Language. It's used for relational databases. A SQL database is a collection of tables that stores a specific set of structured data.
