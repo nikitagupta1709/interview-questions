@@ -105,7 +105,7 @@ A11. Indexes are a special data structure used to locate the record in the given
         DELETE becomes slower because on each operation the indexes must also be updated. 
 
 Q12. Write the query for indexing a field in MongoDB?
-A12. MongoDB provides a method called createIndex() that allows user to create an index. 
+A12. MongoDB provides a method called createIndex() that allows user to create an index. It is important in MongoDB.
     Syntax – 
         db.COLLECTION_NAME.createIndex({KEY:1}) 
 
