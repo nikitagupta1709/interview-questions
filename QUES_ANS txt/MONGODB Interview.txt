@@ -68,7 +68,119 @@ A8. The $group operator is an aggregation operator or an aggregation stage, whic
 
 Q9. How can you paginate on MongoDB?
 A9. The most important use of paging implementation is it used the skip, limit, and sort in database level.
-    1) MongoDB pagination by using limit method
-        db.collection_name.find () .limit (number);
-    2) MongoDB pagination by using skip method
-        db.collection_name.find () .skip (number);
+    1) Using skip and limit method.
+    2) Using the find and limit method.
+    3) Pagination using slice
+    4) Pagination by creating an index on a specified field.
+    5) Pagination by using the sort method.
+    6) Pagination by using the range queries.
+    7) Pagination by using the ID field.
+    Example: 1) MongoDB pagination by using limit method
+                db.collection_name.find () .limit (number);
+            2) MongoDB pagination by using skip method
+                db.collection_name.find () .skip (number);
+
+Q10. How can you sort in MongoDB?
+A10. Sorts all input documents and returns them to the pipeline in sorted order.
+    $sort
+    stage has the following prototype form:
+
+    { $sort: { <field1>: <sort order>, <field2>: <sort order> ... } }
+
+Q11. What is indexing in MongoDB? Why do we need to use indexing? What are pros and cons for indexing?
+A11. Indexes are a special data structure used to locate the record in the given table very quickly without being required to traverse through 
+    every record in the table. MongoDB uses these indexes to limit the number of documents that had to be searched in a collection.
+
+    An index is a schema object that contains an entry for each value that appears in the indexed column(s) of the table or cluster and provides
+    direct, fast access to rows. The users cannot see the indexes, they are just used to speed up searches/queries.
+
+    Pros:
+    i) Speed up SELECT query
+    ii) Helps to make a row unique or without duplicates(primary,unique) 
+    iii) If index is set to fill-text index, then we can search against large string values. for example to find a word from a sentence etc.
+    
+    Cons:
+    i) Indexes take additional disk space.
+    ii) indexes slow down INSERT,UPDATE and DELETE, but will speed up UPDATE if the WHERE condition has an indexed field.  INSERT, UPDATE and 
+        DELETE becomes slower because on each operation the indexes must also be updated. 
+
+Q12. Write the query for indexing a field in MongoDB?
+A12. MongoDB provides a method called createIndex() that allows user to create an index. 
+    Syntax – 
+        db.COLLECTION_NAME.createIndex({KEY:1}) 
+
+Q13. What is the improvement in performance in MongoDB?
+A13. 
+
+Q14. What is the data structure used for indexing?
+A14. B-trees are the most commonly used data structures for indexes as they are time-efficient for lookups, deletions, and insertions. All these
+    operations can be done in logarithmic time. Data that is stored inside of a B-tree can be sorted.
+
+Q15. Are values sorted in indexes?
+A15. A database index is a data structure in the RDBMS that is associated with a table. It provides references to all records in the table for 
+    quick lookup and filtering, and is sorted in a particular order for sorting in that order quickly.
+
+Q16. What are Replica Sets in MongoDB?
+A16. A replica set is a group of mongod instances that maintain the same data set. A replica set contains several data bearing nodes and 
+    optionally one arbiter node. Of the data bearing nodes, one and only one member is deemed the primary node, while the other nodes are deemed 
+    secondary nodes.
+
+Q17. Explain the structure of ObjectID in MongoDB.
+A17. The 12-byte ObjectId consists of: A 4-byte timestamp, representing the ObjectId's creation, measured in seconds since the Unix epoch. 
+    A 5-byte random value generated once per process. This random value is unique to the machine and process.
+    
+Q18. By default, which index is created by MongoDB for every collection?
+A18. Default _id Index: MongoDB creates a unique index on the _id field during the creation of a collection. The _id index prevents clients from 
+    inserting two documents with the same value for the _id field.
+
+Q19. In which format MongoDB represents document structure?
+A19. MongoDB stores data records as BSON documents. It is a binary representation of JSON documents, though it contains more data types than JSON. 
+
+Q20. What is the limitation of a document in MongoDB?
+A20. The maximum BSON document size is 16 megabytes. The maximum document size helps ensure that a single document cannot use excessive amount 
+    of RAM or, during transmission, excessive amount of bandwidth.
+
+Q21. What is the difference between MongoDB and Redis database?
+A21. i) It was developed by Redis labs and initially released on May 10, 2009.
+        It was developed by MongoDB Inc. and initially released on 11 February, 2009.
+    ii) Redis is written in ANSI and C languages.
+        MongoDB is written in C++, Go, JavaScript and Python languages.
+    iii) The primary database model for Redis is Key-Value Store.
+        The primary database model for MongoDB is Document Store.
+    iv) Redis supports secondary indexes with RediSearch module only.
+        MongoDB supports secondary indexes without any restrictions.
+    v) The Server-side scripting in Redis is through Lua.
+        The Server-side scripting in MongoDB is through JavaScript.
+    vi) Server operating systems for Redis are BDS, Linux, OS X and Windows.
+        Server operating systems for MongoDB are Solaris, Linux, OS X and Windows.
+
+Q22. How can you add references between multiple collections?
+A22. DBRefs are references from one document to another using the value of the first document's _id field, collection name, and, optionally, its
+    database name, as well as any other fields. DBRefs allow you to more easily reference documents stored in multiple collections or databases.
+
+Q23. What are lookup in aggregation for MongoDB?
+A23. $lookup performs an equality match on the localField to the foreignField from the documents of the from collection. If an input document 
+    does not contain the localField , the $lookup treats the field as having a value of null for matching purposes.
+
+Q24. What are graph lookups?
+A24. 1.$graphLookup is an aggregation operation which works on the input document.
+    2.$graphLookup target the search to the collections designated by the form of parameters.
+    3. For-each input document, the search starts with the value designated by "startWith".
+    4.$graphLookup matches the start with value against the field designated by connectToField in other documents field in the from collection.
+
+Q25. What is the alternative for lookups for SQL?
+A25. 
+
+Q26. How can you do one to many relation in MongoDB?
+A26. One to many relationships with mongoDB can easily be mapped using mongoose. Although MongoDB isn’t a relational database like PostgreSQL, 
+    you can still create relationships that are either embedded or referenced. Referenced relationships are more akin to the relations using in 
+    relational databases.
+
+Q27. How can you do many to many relation in MongoDB?
+A27. As there is no single command to implement a many-to-many relationship in a relational database, it is more difficult than a one-to-many 
+    relationship. The same is true when using mongoDB to implement them. In fact, you can't use a command to create any type of relationship in 
+    MongoDB.
+
+
+
+
