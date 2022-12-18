@@ -1,0 +1,44 @@
+Q1. What is Caching? How can you save money with Caching?
+A1. A cache is a high-speed data storage layer which stores a subset of data, typically transient in nature, 
+    so that future requests for that data are served up faster than is possible by accessing the data’s primary 
+    storage location. Caching allows you to efficiently reuse previously retrieved or computed data.
+
+    By serving web pages to your users from a local web cache, you need to fetch less data from the internet, 
+    saving you bandwidth and money. Bandwidth savings translate into money in different ways in different organisations:
+    i) No need to upgrade to a higher bandwidth connection
+    ii) Direct cost savings on metered connections: less data traffic = lower bills
+    iii) Ability to add more users without increasing capacity.
+
+Q2. What is load balancing?
+A2. Load balancing is the method of distributing network traffic equally across a pool of resources that support an application. 
+    Modern applications must process millions of users simultaneously and return the correct text, videos, images, and other data 
+    to each user in a fast and reliable manner. To handle such high volumes of traffic, most applications have many resource servers 
+    with duplicate data between them. A load balancer is a device that sits between the user and the server group and acts as an 
+    invisible facilitator, ensuring that all resource servers are used equally.
+
+    Benefits of load balancing:
+    i) Application availability
+    ii) Application scalability
+    iii) Application security
+    iv) Application performance
+
+Q3. What is CAP Theorem?
+A3. The CAP theorem (also called Brewer’s theorem) states that a distributed database system can only guarantee two out of these 
+    three characteristics: Consistency, Availability, and Partition Tolerance.
+    i) Consistency: A system is said to be consistent if all nodes see the same data at the same time.
+    ii) Availability: Availability in a distributed system ensures that the system remains operational 100% of the time. Every request 
+        gets a (non-error) response regardless of the individual state of a node.
+    iii) Partition Tolerance: This condition states that the system does not fail, regardless of if messages are dropped or delayed 
+        between nodes in a system.
+
+Q4. What is PACELC Theorem?
+A4. The PACELC theorem states that in a system that replicates data:
+    i) if there is a partition (P), a distributed system can tradeoff between availability and consistency (A or C)
+    ii) else (E), when the system is running normally in the absence of partitions, the system can tradeoff between latency (L) and consistency (C).
+
+    The first part of the theorem (PAC) is the same as the CAP theorem, and the ELC is the extension. The whole thesis assumes we 
+    maintain high availability by replication. So, when there is a failure, CAP theorem prevails. But if not, we still have to consider 
+    the tradeoff between consistency and latency of a replicated system.
+
+Q5. What is Eventual Consistency?
+A5. 
