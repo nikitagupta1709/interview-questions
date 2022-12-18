@@ -41,4 +41,26 @@ A4. The PACELC theorem states that in a system that replicates data:
     the tradeoff between consistency and latency of a replicated system.
 
 Q5. What is Eventual Consistency?
-A5. 
+A5. Eventual Consistency is a guarantee that when an update is made in a distributed database, that update will eventually be reflected in all nodes 
+    that store the data, resulting in the same response every time the data is queried. With eventual consistency, results are less consistent early on, 
+    but they are provided much faster with low latency. Early results of eventual consistency data queries may not have the most recent updates because 
+    it takes time for updates to reach replicas across a database cluster.
+
+Q6. What is Strong Consistency?
+A6. Strong Consistency simply means the data must be strongly consistent at all times. All the server nodes across the world should contain the same 
+    value as an entity at any point in time. And the only way to implement this behavior is by locking down the nodes when being updated. 
+
+Q7. What are the different types of databases?
+A7. i) Hierarchical databases: his database follows the progression of data being categorized in ranks or levels, wherein data is categorized based 
+            on a common point of linkage.
+    ii) Network databases:  The child records are given the freedom to associate with multiple parent records. As a result, a network or net of 
+            database files linked with multiple threads is observed. 
+    iii) Object-oriented databases: . Information stored in a database is capable of being represented as an object which response as an instance 
+            of the database model. Therefore, the object can be referenced and called without any difficulty. 
+    iv) Relational databases: In this database, every piece of information has a relationship with every other piece of information. 
+            This is on account of every data value in the database having a unique identity in the form of a record.
+    v) NoSQL databases: A NoSQL database includes simplicity of design, simpler horizontal scaling to clusters of machines, and finer control over 
+            availability. MongoDB falls in the category of NoSQL document-based database. 
+
+Q8. What are message queues?
+A8. 
