@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Sanchez', sans-serif;
+    font-size: 12px;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    color: #fff;
+    margin: 0 20px;
+}
+.container {
+    max-width: 768px;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: 36px;
+    margin: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.quotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quote {
+    position: relative;
+    font-size: 20px;
+    line-height: 1.7em;
+    word-break: break-word;
+}
+blockquote {
+    margin-bottom: 25px;
+}
+blockquote {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+.quote:after {
+    content: '\201D';
+    position: absolute;
+    top: 0.28em;
+    right: 0;
+    font-size: 6em;
+    font-style: italic;
+    color: #e7e6e4;
+    z-index: -1;
+}
+.quote footer {
+    font-size: 0.6em;
+    font-weight: 700;
+    color: #d3d3cf;
+    text-align: right;
+}
+footer {
+    display: block;
+}
+.quote footer:before {
+    content: '\2015';
+}
+.quote:after {
+    content: '\201D';
+    position: absolute;
+    top: 0.28em;
+    right: 0;
+    font-size: 6em;
+    font-style: italic;
+    color: #e7e6e4;
+    z-index: -1;
+}
+.loader {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+}
+.loader div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #f4f4f4;
+    animation: loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loader div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
