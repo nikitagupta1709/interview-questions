@@ -1,0 +1,61 @@
+Q1. Explain redux to a 5 year old (ELI5) ?
+A1. Consider someone who has given you a task to get some chips out of a shopkeeper. The intention ( action ) you have in your mind is to get chips from the shop. 
+    In JavaScript, we can represent it as GET_CHIPS. The first step when you enter the shop is to talk to a shopkeeper and ask them to get the chips out of the safe. 
+    You never just go to a shop and just went straight to the store, get your chips, and left. 
+
+    Redux Store ( Grocery Store ) - Chips is kept safely in the store. The store holds the state and keeps it safe.
+
+    Redux Actions - in the real world can be defined as a process of doing something. So in order to update anything in your state, we need to act on something. 
+    In our shop example, we need to act by talking to a shopkeeper and ask them to give you chips.
+    The action object always has a type field that describes the action you want to perform. In our case, it is GET_CHIPS.
+
+    Reducer ( Shopkeeper ) - there is no possible way of getting chips directly from the grocery store and we have to talk to the shopkeeper to get our chips. In our case, 
+    the shopkeeper is the reducer. It will go to the store and get the chips. The whole process is called dispatching an action.
+    Reducer ( Shopkeeper ) has the knowledge of how to update the state ( get the chips ) and ensure states get updated ( you get the chips ). Reducers will always return 
+    to the new state.
+
+    This was the whole process of geeting chips ( performing action ) by asking from shopkeeper ( using reducer to dispatch ) and geetting chips from grocery store ( Redux store ).
+
+Q2. How is redux different from context API?
+    _ _ _ _ _ __ _ _ _ _ _ _ _ _ __ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A2. |            Context API                                 |   Redux                                                         |
+    |                                                        |                                                                 |
+    | i) useContext is a hook.                               |   Redux is a state management library.                          |
+    | ii) It is used to share data.                          |   It is used to manage data and state.                          |
+    | iii) Changes are made with the Context value.          |   Changes are made with pure functions i.e. reducers.           |
+    | iv) We can change the state in it.                     |   The state is read-only. We cannot change them directly.       |
+    | v) It re-renders all components whenever there         |   It only re-render the updated components.                     | 
+    |    is any update in the provider’s value prop.         |                                                                 |
+    |vi) It is better to use with small applications.        |   It is perfect for larger applications.                        |
+    |vii) It is easy to understand and requires less code.   |   It is quite complex to understand.                            |
+    |_ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ __ _ _ _ _ _ _ _ _ |
+
+Q3. What does useSelector do?
+A3. useSelector() ​ Allows you to extract data from the Redux store state, using a selector function.
+
+Q4. What is immutability?
+A4. In functional and in object-oriented programming, an object is considered as immutable when its state can’t be changed after it was created. 
+    Benefits of immutable objects - they can be helpful in multi-threaded applications where multiple threads can use data represented by immutable objects without concern of the data 
+    being changed by other threads.
+
+Q5. Why do we need to spread the state in redux?
+A5. Spread operator could be use to simplify passing react props down to a component. In react redux and reducer functions, spread operator are applied to compute new state without mutating state.
+    Like the Array Spread Operator, the Object Spread Operator creates a shallow clone of the original object. 
+
+Q6. What does Object.freeze() do?
+A6. The Object.freeze() method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer 
+    be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object's 
+    prototype cannot be re-assigned. freeze() returns the same object that was passed in.
+    EXAMPLE:- 
+    const obj = {
+        prop: 42
+    };
+
+    Object.freeze(obj);
+
+    obj.prop = 33;
+    // Throws an error in strict mode
+
+    console.log(obj.prop);
+    // expected output: 42
+
