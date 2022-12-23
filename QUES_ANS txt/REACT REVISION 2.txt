@@ -163,3 +163,15 @@ Q21. What is reconciliation?
 A21. The reconciliation process makes React work faster. Reconciliation is the process through which React updates the Browser DOM. Important concepts behind the working of the Reconciliation process are:
     i) Virtual DOM  
     ii) Diffing Algorithm
+
+Q22. Explain life cycle diagram with hooks?
+A22. Refer to following link for diagram: "https://wavez.github.io/react-hooks-lifecycle/"
+
+Q23. What does the cleanup function in useEffect do?
+A23. React's useEffect cleanup function saves applications from unwanted behaviors like memory leaks by cleaning up effects.
+
+Q24. What are the rules of hooks?
+A24. There are 3 rules for hooks:
+    i) Hooks can only be called inside React function components.
+    ii) Hooks can only be called at the top level of a component.
+    iii) Hooks cannot be conditional.
