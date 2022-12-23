@@ -149,4 +149,17 @@ A19. Higher-order components or HOC is the advanced method of reusing the compon
     Reason to use Higher-Order component:
        i) Easy to handle
        ii) Get rid of copying the same logic in every component
-       iii) Makes code more readable
+       iii) Makes code more readable.
+
+Q20. What are keys in React? Why are keys important?
+A20. A “key” is a special string attribute you need to include when creating lists of elements in React. Keys are used in React to identify which items in the list are changed, updated, or deleted. In other words, we can say that keys are used to give an identity to the elements in the lists.
+    It is recommended to use a string as a key that uniquely identifies the items in the list.
+    const numbers = [ 1, 2, 3, 4, 5 ];
+    const updatedNums = numbers.map((number)=>{
+        return <li key={index}>{number} </li>;
+    });
+
+Q21. What is reconciliation?
+A21. The reconciliation process makes React work faster. Reconciliation is the process through which React updates the Browser DOM. Important concepts behind the working of the Reconciliation process are:
+    i) Virtual DOM  
+    ii) Diffing Algorithm
