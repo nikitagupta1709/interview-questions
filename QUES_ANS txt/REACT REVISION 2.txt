@@ -143,4 +143,10 @@ A18. React memo is a Higher Order Component (HOC). Memo API uses the memoization
         const MeomizedComponent = React.memo(function MyAnotherComponent(props) {});
 
 Q19. What is Higher-order Components?
-A19. 
+A19. Higher-order components or HOC is the advanced method of reusing the component functionality logic. It simply takes the original component and returns the enhanced component.
+    Syntax:
+        const EnhancedComponent = higherOrderComponent(OriginalComponent);
+    Reason to use Higher-Order component:
+       i) Easy to handle
+       ii) Get rid of copying the same logic in every component
+       iii) Makes code more readable
