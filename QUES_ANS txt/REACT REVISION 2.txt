@@ -110,5 +110,16 @@ A14. Features of Webpack: There are many features of webpack as follows:
     iii) Loaders: Loaders convert different types of files like images and CSS into a module before adding them to the dependency graph.
     iv) Plugins: Plugins provide functionality. It can provide much functionality like printing something on running the webpack, minifying, optimization of bundles, etc.
 
-Q15. 
-A15. 
+Q15. What are Controlled and Uncontrolled components?
+A15.                Controlled  Component                            |   Uncontrolled Component
+    | i) The component is under control of the component’s state.	 |   Components are under the control of DOM.
+    | ii) These components are predictable as are controlled by      |   Are Uncontrolled because during the life cycle methods the data may loss
+    |    the state of the component.	                             |   
+    | iii) Internal state is not maintained	                         |   Internal state is maintained
+    | iv) It accepts the current value as props	                     |   We access the values using refs
+    | v) Does not maintain its internal state.	                     |   Maintains its internal state.
+    | vi) Controlled by the parent component.	                     |   Controlled by the DOM itself.
+    | vii)Have better control on the form data and values	         |   Has very limited control over form values and data.
+
+Q16. What is flux architecture?
+A16. Flux is AN architecture that Facebook uses internally when operating with React. It is not a framework or a library. It is merely a replacement quite an architecture that enhances React and also the idea of unidirectional data flow.
