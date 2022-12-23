@@ -59,3 +59,56 @@ A6. The Object.freeze() method freezes an object. Freezing an object prevents ex
     console.log(obj.prop);
     // expected output: 42
 
+Q7. Why is immutability required by Redux?
+A7. Immutability of redux state is necessary since it allows detecting redux state changes in an efficient manner. This implies that whenever we want to modify a redux state, we must create 
+    a new copy of it and do modifications to that copy - which then becomes the new redux state.
+
+Q8. How does Redux use shallow equality checking?
+A8. React-Redux uses shallow equality checking to determine whether the component it's wrapping needs to be re-rendered. To do this, it assumes that the wrapped component is pure; that is, 
+    that the component will produce the same results given the same props and state.
+
+Q9. How well does Redux “scale” in terms of performance and architecture?
+A9. The work done by Redux generally falls into a few areas: processing actions in middleware and reducers, notifying subscribers after actions are dispatched, 
+    and updating UI components based on the state changes. React Redux in particular is heavily optimized to cut down on unnecessary re-renders, and React-Redux v5 shows 
+    noticeable improvements over earlier versions.
+    
+    Redux may not be as efficient out of the box when compared to other libraries. For maximum rendering performance in a React application, state should be stored in a normalized shape, many individual 
+    components should be connected to the store instead of just a few, and connected list components should pass item IDs to their connected child list items. This minimizes the overall amount of rendering 
+    to be done. Use of memoized selector functions is also an important performance consideration.
+
+Q10. How does Redux compare to the React Context API?
+A10.    _ _ _ _ _ __ _ _ _ _ _ _ _ _ __ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+        |            Context API                                 |   Redux                                                         |
+        |                                                        |                                                                 |
+        | i) useContext is a hook.                               |   Redux is a state management library.                          |
+        | ii) It is used to share data.                          |   It is used to manage data and state.                          |
+        | iii) Changes are made with the Context value.          |   Changes are made with pure functions i.e. reducers.           |
+        | iv) We can change the state in it.                     |   The state is read-only. We cannot change them directly.       |
+        | v) It re-renders all components whenever there         |   It only re-render the updated components.                     | 
+        |    is any update in the provider’s value prop.         |                                                                 |
+        |vi) It is better to use with small applications.        |   It is perfect for larger applications.                        |
+        |vii) It is easy to understand and requires less code.   |   It is quite complex to understand.                            |
+        |_ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ __ _ _ _ _ _ _ _ _ | 
+
+Q11. What is JSX?
+A11. JSX stands for JavaScript XML. It is simply a syntax extension of JavaScript. It allows us to directly write HTML in React (within JavaScript code). It is easy to create a template using JSX in React, 
+    but it is not a simple template language instead it comes with the full power of JavaScript. It is faster than normal JavaScript as it performs optimizations while translating to regular JavaScript. 
+    Instead of separating the markup and logic in separated files, React uses components for this purpose. 
+
+Q12. What is Conditional Rendering?
+A12.  To create multiple components and render them based on some conditions. This is also a kind of encapsulation supported by React.
+
+Q13. What is tree-shaking ?
+A13. Tree shaking is a term commonly used within a JavaScript context to describe the removal of dead code.
+    It relies on the import and export statements to detect if code modules are exported and imported for use between JavaScript files.
+
+Q14. What are some features of using webpack?
+A14. Features of Webpack: There are many features of webpack as follows:
+    
+    i) Entry: We all know webpack makes a dependency graph and the starting of this graph is known as the entry or entry point. From the starting point of the dependency graph, it will follow all the dependencies to know what it has to bundle.
+    ii) Output: Output tells webpack where to put the bundles that it had made and what will be its format.
+    iii) Loaders: Loaders convert different types of files like images and CSS into a module before adding them to the dependency graph.
+    iv) Plugins: Plugins provide functionality. It can provide much functionality like printing something on running the webpack, minifying, optimization of bundles, etc.
+
+Q15. 
+A15. 
